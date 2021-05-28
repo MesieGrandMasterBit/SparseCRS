@@ -5,11 +5,11 @@ using namespace std;
 
 struct CRSMatrix
 {
-    int m; // number of rows
-    int n; // number of columns
-    int k; // number of non-zero elements
-    vector<double> AN; // non-zero elements 
-    vector<int> JA; // column indices 
-    vector<int> IA; // row ptr 
+    int m; // кол-во строк
+    int n; // кол-во столбцов
+    int k; // кол-во ненулевых элементов
+    vector<double> AN; // массив значений
+    vector<int> JA; // массив индексов столбцов
+    vector<int> IA; // массив индексации строк
 };
 CRSMatrix sparse_transpose(const CRSMatrix& input);
