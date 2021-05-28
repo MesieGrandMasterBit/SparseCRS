@@ -4,7 +4,7 @@ using namespace std;
 
 CRSMatrix sparse_transpose(const CRSMatrix& input) {
     int g = 0, l = 0, y = 0, h = 0;
-    CRSMatrix res{
+    CRSMatrix res{ // результирующие массивы
         input.m,
         input.n,
         input.k,
@@ -13,8 +13,10 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
         vector<int>(input.m + 1, 0)
     };
 
-    double Arr[10][10];
-    double ArrT[10][10];
+    double Arr[10][10]; // массивы, созданые для демонстрации 
+    double ArrT[10][10]; // работы примера
+    
+    // Вывод изначальных данных
     cout << "CSR matrix:\nIA: ";
     for (int i = 0; i < input.m + 1; i++) {
         cout << input.IA[i] << " ";
@@ -53,9 +55,11 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
     }
     cout << endl;
 
+    // Создание N векторов 
     vector<vector<int> > IntV(input.JA.size(), vector<int>());
     vector<vector<double> > DoubleV(input.AN.size(), vector<double>());
 
+    // Заполнение N векторов
     for (int i = 0; i <= input.m - 1; i++) {
         for (int j = input.IA[i]; j < input.IA[i + 1]; j++) {
             int c = input.JA[j];
@@ -66,6 +70,7 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
         }
     }
 
+    // Копирование в результирующие массивы
     for (int i = 0; i <= input.m - 1; i++) {
         for (int j = 0; j < IntV[i].size(); j++) {
             res.JA[y] = IntV[i][j];
@@ -75,6 +80,7 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
         }
     }
 
+    // Вывод конечных данных
     cout << "-------------------------------------------------\n\nCSR matrix(t):\nIAt: ";
     for (int i = 0; i < input.m + 1; i++) {
         cout << res.IA[i] << " ";
@@ -122,6 +128,7 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
 
 int main()
 {
+    // исходные данные
     CRSMatrix testCRS = {
         10,
         10,
