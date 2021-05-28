@@ -102,7 +102,7 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
         cout << endl;
     }
     
-    cout << "CSR matrix(t):\nIAt: ";
+    cout << endl << "CSR matrix(t):\nIAt: ";
     for (int i = 0; i < input.m + 1; i++) {
         cout << res.IA[i] << " ";
     }
