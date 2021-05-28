@@ -66,9 +66,6 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
         }
     }
 
-    //clock_t end_time = clock();
-    //double seconds = ((double)end_time - start_time);
-
     for (int i = 0; i <= input.m - 1; i++) {
         for (int j = 0; j < IntV[i].size(); j++) {
             res.JA[y] = IntV[i][j];
