@@ -3,8 +3,11 @@
 using namespace std;
 
 CRSMatrix sparse_transpose(const CRSMatrix& input) {
-    int g = 0, l = 0, y = 0, h = 0;
-    CRSMatrix res{ // результирующие массивы
+    int y = 0;
+    int g = 0, l = 0, h = 0;
+    
+    // результирующие массивы
+    CRSMatrix res{ 
         input.m,
         input.n,
         input.k,
@@ -13,7 +16,7 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
         vector<int>(input.m + 1, 0)
     };
 
-    double Arr[10][10]; // массивы, созданые для демонстрации 
+    double Arr[10][10]; // массивы, созданyые для демонстрации 
     double ArrT[10][10]; // работы примера
     
     // Вывод изначальных данных
@@ -31,6 +34,7 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
     }
     cout << endl << endl;
 
+    // Только для примера на небольших матрицах
     cout << "Matrix:" << endl;
     for (int i = 0; i < input.m; i++) {
         for (int j = 0; j < input.m; j++) {
@@ -81,7 +85,24 @@ CRSMatrix sparse_transpose(const CRSMatrix& input) {
     }
 
     // Вывод конечных данных
-    cout << "-------------------------------------------------\n\nCSR matrix(t):\nIAt: ";
+    cout << "-------------------------------------------------\n\nРезультат:" << endl;
+    cout << "IntV:" << endl;
+    for (int i = 0; i < input.m; i++) {
+        for (int j = 0; j < IntV[i].size(); j++) {
+            cout << IntV[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    cout << endl << "DoubleV:" << endl;
+    for (int i = 0; i < input.m; i++) {
+        for (int j = 0; j < DoubleV[i].size(); j++) {
+            cout << DoubleV[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    cout << "CSR matrix(t):\nIAt: ";
     for (int i = 0; i < input.m + 1; i++) {
         cout << res.IA[i] << " ";
     }
